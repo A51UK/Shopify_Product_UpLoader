@@ -47,21 +47,21 @@ namespace Shopify_Product_Loader
         {
             int loop = 0;
 
-            Char csvSeparator = System.Configuration.ConfigurationSettings.AppSettings["Input_CSV_Separator"][0];
+            Char csvSeparator = System.Configuration.ConfigurationManager.AppSettings["Input_CSV_Separator"][0];
 
-            string[] output_Header =  System.Configuration.ConfigurationSettings.AppSettings["OutPut_Header_Name"].Split(',');
+            string[] output_Header =  System.Configuration.ConfigurationManager.AppSettings["OutPut_Header_Name"].Split(',');
              
-            string[] input_CSV_Header = System.Configuration.ConfigurationSettings.AppSettings["Input_CSV_Header"].Split(',');
+            string[] input_CSV_Header = System.Configuration.ConfigurationManager.AppSettings["Input_CSV_Header"].Split(',');
 
-            List<string> variant_Column = System.Configuration.ConfigurationSettings.AppSettings["Input_CSV_Header"].Split(',').ToList();
+            List<string> variant_Column = System.Configuration.ConfigurationManager.AppSettings["Variant_Column"].Split(',').ToList();
 
-            for(int i = 0; i > output_Header.Count(); i++)
+            for(int i = 0; i < output_Header.Count(); i++)
             {
                 HeaderType _hType = new HeaderType();
 
                 _hType.HeaderName = output_Header[i]; 
 
-                if(input_CSV_Header.Count() < i)
+                if(input_CSV_Header.Count() > i)
                 {
                     _hType.CSV_HeaderName = input_CSV_Header[i];
 
@@ -69,6 +69,7 @@ namespace Shopify_Product_Loader
                     {
                         _hType.IsVariant = true;
                     }
+                    headerType.Add(_hType);
                 }
             }
 

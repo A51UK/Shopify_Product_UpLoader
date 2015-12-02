@@ -29,6 +29,11 @@ namespace Shopify_Product_Loader
 
         }
 
+        public Simple_Feed(ShopifyAPI _shopifyAPI, string _download_location) : base(_shopifyAPI, _download_location)
+        {
+
+        }
+
         public override bool Run()
         {
             bool done = false;
@@ -64,14 +69,14 @@ namespace Shopify_Product_Loader
         {
            foreach(var row in Source_CSV)
            {
-                if (row[headerType.Where(h => h.HeaderName == "InStock").SingleOrDefault().ColumnNumber] == "true")
+                if (row[headerType.Where(h => h.HeaderName == "InStock").SingleOrDefault().ColumnNumber].ToLower() == "true")
                 {
                     Product _product = new Product();
                     
                     _product.Handle = row[headerType.Where(h => h.HeaderName == "Handle").SingleOrDefault().ColumnNumber];
                     _product.Title = row[headerType.Where(h => h.HeaderName == "Title").SingleOrDefault().ColumnNumber];
                     _product.BodyHTML = row[headerType.Where(h => h.HeaderName == "BodyHTML").SingleOrDefault().ColumnNumber];
-                    _product.EAN = row[headerType.Where(h => h.HeaderName == "barcode").SingleOrDefault().ColumnNumber];
+                    _product.EAN = row[headerType.Where(h => h.HeaderName == "Barcode").SingleOrDefault().ColumnNumber];
                     _product.Vendor = row[headerType.Where(h => h.HeaderName == "Vendor").SingleOrDefault().ColumnNumber];
                     _product.Type = row[headerType.Where(h => h.HeaderName == "Type").SingleOrDefault().ColumnNumber];
                     _product = GetImages(_product, row);

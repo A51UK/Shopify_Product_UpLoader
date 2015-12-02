@@ -25,7 +25,7 @@ namespace Shopify_Product_Loader
 
                 ShopifyAPI shopfiyAPI = new ShopifyAPI();
 
-                Simple_Feed feed = new Simple_Feed(shopfiyAPI);
+                Simple_Feed feed = new Simple_Feed(shopfiyAPI,System.Configuration.ConfigurationManager.AppSettings["Source_CSV_Location"]);
 
                 bool ok = feed.Run();
 

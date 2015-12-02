@@ -161,9 +161,9 @@ namespace Shopify_Product_Loader
 
                     if (vendor.Options != null)
                     {
-                        for (int i = 0; i < vendor.Options.Count() - 1; i++)
+                        for (int i = 0; i < vendor.Options.Count(); i++)
                         {
-                            sb.Append(",\"option" + i + "\":\"" + vendor.Options + "\"");
+                            sb.Append(",\"option" + i + "\":\"" + vendor.Options[i] + "\"");
                         }
                     }
 
