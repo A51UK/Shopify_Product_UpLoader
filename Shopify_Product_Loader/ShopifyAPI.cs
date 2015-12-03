@@ -163,7 +163,7 @@ namespace Shopify_Product_Loader
                     {
                         for (int i = 0; i < vendor.Options.Count(); i++)
                         {
-                            sb.Append(",\"option" + i + "\":\"" + vendor.Options[i] + "\"");
+                            sb.Append(",\"option" + (i + 1) + "\":\"" + vendor.Options[i] + "\"");
                         }
                     }
 
