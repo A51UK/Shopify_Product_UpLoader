@@ -4,10 +4,12 @@ The code should be use as a template to build a program that upload and update p
 
  The Simple_Feed class is an example on the way to input product data into the program.
 
-The code needs requirements: 
+The code requirements: 
 
 .NET 4.6
 
 Visual Studio 2015
 
+Shopify Account 
 
+Shopify App
